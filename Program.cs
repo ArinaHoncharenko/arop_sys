@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -42,8 +42,8 @@ namespace arch3_arop_sys
                     j--;
                 }
 
-                result = (sum % 2).ToString() + result;
-                carry = sum / 2;
+                result = (sum % n).ToString() + result;
+                carry = sum / n;
             }
 
             if (carry != 0)
@@ -86,7 +86,7 @@ namespace arch3_arop_sys
 
             i = num1.Length;
             j = num2.Length; 
-            int[] result2 = new int[i + i];
+            int[] result2 = new int[i + j];
             for (int k = i - 1; k >= 0; k--)
             {
                 for (int m = j - 1; m >= 0; m--)
@@ -96,8 +96,8 @@ namespace arch3_arop_sys
                     int p2 = k + m + 1;
                     int sum = mult + result2[p2];
 
-                    result2[p2] = sum % 2;
-                    result2[p1] += sum / 2;
+                    result2[p2] = sum % n;
+                    result2[p1] += sum / n;
                 }
             }
 
@@ -107,51 +107,8 @@ namespace arch3_arop_sys
                 resultStr += digit.ToString();
             }
 
-            Console.WriteLine(num1 + " * " + num2 + " = " + resultStr.TrimStart('0'));
+            Console.WriteLine(num1 + " * " + num2 + " = " + resultStr);
             Console.ReadLine();
-
-
-
-            /*Octal:
-            Hexal:
-                int i = num1;
-                string num = "";
-                while (i > 0)
-                {
-                    int remaind = i % n;
-                    if (n != 16)
-                    {
-                        num = remaind + num;
-                    }
-                    else
-                    {
-                        if (remaind < 10)
-                        {
-                            num = remaind.ToString() + num;
-                        }
-                        else
-                        {
-                            char hexChar = (char)('A' + remaind - 10);
-                            num = hexChar.ToString() + num;
-                        }
-                    }
-                    i /= n;
-                }
-                if (n == 2)
-                {
-                    Console.WriteLine($"The binary equivalent is: {num}");
-                    n = 8;
-                    goto Octal;
-                }
-                else if (n == 8)
-                {
-                    Console.WriteLine($"The octal equivalent is: {num}");
-                    n = 16;
-                    goto Hexal;
-                }
-                Console.WriteLine($"The hexal equivalent is: {num}");
-                Console.ReadLine();*/
-
         }
     }
 }
